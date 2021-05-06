@@ -1,0 +1,63 @@
+﻿@model Sistema_Veterinaria.Models.Cliente
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/style-login.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        @using (Html.BeginForm("RegistrarCliente", "Registro", FormMethod.Post, new { @class = "form" }))
+        {
+            <!--<form action="RegistrarMascota" class="form">-->
+            <h2>Usuario</h2>
+            <div class="input-group">
+                @Html.EditorFor(model => model.nombre)
+                @Html.LabelFor(model => model.nombre, "Nombre")
+                <!--<input type="text" name="nombre-dueño" id="nombre-dueño">-->
+                <!--<label for="nombre-dueño">Nombre</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.apellido)
+                @Html.LabelFor(model => model.apellido, "Apellido")
+                <!--<input type="text" name="apellido-dueño" id="apellido-dueño">
+                <label for="apellido-dueño">Apellido</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.email)
+                @Html.LabelFor(model => model.email, "Email")
+                <!--<input type="text" name="email" id="email">
+                <label for="email">Email</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.telefono)
+                @Html.LabelFor(model => model.telefono, "Telefono")
+                <!--<input type="text" name="telefono" id="telefono">
+                <label for="telefono">Telefono</label>-->
+            </div>
+            <div class="input-group">
+                @Html.PasswordFor(model => model.contraseña)
+                @Html.LabelFor(model => model.contraseña, "Contraseña")
+                <!--<input type="password" name="contraseña" id="contraseña">
+                <label for="contraseña">Contraseña</label>-->
+            </div>
+            <input type="submit" value="Continuar" class="submit-btn">
+            <!--</form>-->
+        }
+    </div>
+
+@if (ViewBag.MENSAJE != null)
+{
+    <script type="text/javascript">
+        var msj = "@ViewBag.MENSAJE";
+        var cod = msj.substring(15, 16);
+        alert(msj);
+        location.href = "RegistrarMascota?cod="+cod;
+    </script>
+    
+}
+</body>
+</html>

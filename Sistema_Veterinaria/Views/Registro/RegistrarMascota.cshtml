@@ -1,0 +1,91 @@
+﻿@model Sistema_Veterinaria.Models.Mascota
+@{ 
+    int cod = int.Parse(Request["cod"]);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/style-login.css">
+    <link rel="stylesheet" href="~/Content/jquery.datetimepicker.min.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        @using (Html.BeginForm("RegistrarMascota", "Registro", FormMethod.Post, new { @class = "form" }))
+        {
+            <!--<form action="" class="form">-->
+            <h2>Mascota</h2>
+            <div class="input-group">
+                @Html.EditorFor(model => model.nombre)
+                @Html.LabelFor(model => model.nombre, "Nombre")
+                <!--<input type="text" name="nombre-mascota" id="nombre-mascota">
+                <label for="nombre-mascota">Nombre</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.especie)
+                @Html.LabelFor(model => model.especie, "Especie")
+                <!--<input type="text" name="especie" id="especie">
+                <label for="especie">Especie</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.raza)
+                @Html.LabelFor(model => model.raza, "Raza")
+                <!--<input type="text" name="raza" id="raza">
+                <label for="raza">Raza</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.edad)
+                @Html.LabelFor(model => model.edad, "Edad")
+                <!--<input type="number" name="edad" id="edad">
+                <label for="edad">Edad</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.sexo)
+                @Html.LabelFor(model => model.sexo, "Sexo")
+                <!--<input type="text" name="sexo" id="sexo">
+                <label for="sexo">Sexo</label>-->
+            </div>
+            <div class="input-group">
+                @Html.EditorFor(model => model.fechanacimiento)
+                @Html.LabelFor(model => model.fechanacimiento, "Fecha de Nacimiento")
+                
+                <input type="hidden" name="cod" id="cod" value="@cod">
+            <!--<label for="fecha-nacimiento">Fecha de Nacimiento</label>-->
+            </div>
+            
+            <input type="submit" value="Registrarse" class="submit-btn">
+            <!--</form>-->
+        }
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.datetimepicker.full.min.js"></script>
+
+    <script>
+
+        $.datetimepicker.setLocale('es');
+
+        jQuery(function () {
+            jQuery('#fechanacimiento').datetimepicker({
+                dayOfWeekStart: 1,
+                format: 'Y-m-d H:i:s',
+                step: 1
+            });
+        });
+    </script>
+
+    @if (ViewBag.MENSAJE != null)
+    {
+        <script type="text/javascript">
+        alert("@ViewBag.MENSAJE");
+        location.href = "../Login/validacion";
+        </script>
+    }
+
+</body>
+</html>

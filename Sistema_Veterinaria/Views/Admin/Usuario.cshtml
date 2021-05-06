@@ -1,0 +1,471 @@
+﻿@model Sistema_Veterinaria.Models.Cliente
+@{
+    //Sistema_Veterinaria.Models.Servicios model1 = new Sistema_Veterinaria.Models.Servicios();
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/Content/DashboardMenu.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/all.js"></script>
+    <script src="~/Scripts/DashboardMenu.js"></script>
+
+</head>
+<body id="cuerpo" class="body">
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <img src="~/img/patas.png" style="width: 30px;" />
+                <div class="logo_name">Veterinaria</div>
+            </div>
+            <i class="fas fa-bars" id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="Usuario">
+                    <i class="fas fa-user"></i>
+                    <span class="links_name">User</span>
+                </a>
+                <span class="tooltip">Usuario</span>
+            </li>
+            <li>
+                <a href="Mantenimiento">
+                    <i class="fas fa-cogs"></i>
+                    <span class="links_name">Mantenimiento</span>
+                </a>
+                <span class="tooltip">Mantenimiento</span>
+            </li>
+        </ul>
+
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="~/img/imgusuario.png" />
+                    <div class="name_job">
+                        <div class="name">Edwin Yachachin</div>
+                        <div class="job">Trabajador</div>
+                    </div>
+                </div>
+                <i class="fas fa-sign-out-alt" id="log_out"></i>
+            </div>
+        </div>
+    </div>
+    <div class="home_content d-flex flex-column" id="home_content">
+        <div id="content">
+            <nav id="" class="nav_bar navbar-expand">
+                <ul id="" class="navbar_nav">
+                    <li class="nav_item">
+                        <a class="nav_link" id="cliente">Cliente</a>
+                    </li>
+                    <li class="nav_item">
+                        <a class="nav_link" id="mascota">Mascota</a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="container" class="div-container"></div>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.querySelector(".logo_content");
+        let sidebar = document.querySelector(".sidebar");
+
+        btn.onclick = function () {
+            sidebar.classList.toggle("active");
+        }
+
+        /*sidebar.onclick = function () {
+            sidebar.classList.toggle("active");
+        }*/
+
+    </script>
+</body>
+</html>
+
+<!--Modal Agregar Cliente-->
+<div class="modal fade" id="modal_agregar_cliente" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            @using (Html.BeginForm("AgregarCliente", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <!--<form id="formAgregar" action="acciones/agregarUsuario.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>-->
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar Cliente</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        <!--<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>-->
+                        @Html.LabelFor(model => model.nombre, "Nombre", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            <!--<input type="text" class="form-control" placeholder="Nombre" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="nombre" name="nombre" autocomplete="off" required>-->
+                            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+
+                        @*<label for="precio" class="col-sm-2 col-form-label">Precio</label>*@
+                        @Html.LabelFor(model => model.apellido, "Apellido", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Precio" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="precio" name="precio" autocomplete="off" autofocus required>*@
+                            @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>*@
+                        @Html.LabelFor(model => model.email, "Email", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Descripcion" pattern="^([a-zA-Z0-9])*.([a-zA-Z0-9_-])+$" id="descripcion" name="descripcion" autocomplete="off" autofocus required>*@
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos</div>-->
+                        </div>
+
+                        @*<label for="serie" class="col-sm-2 col-form-label">Serie</label>*@
+                        @Html.LabelFor(model => model.telefono, "Telefono", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="serie" id="serie" class="form-control" required>
+                                    <option value="">Seleccione Serie</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                            @*@Html.DropDownList("codigoSerie", "Seleccione Serie")*@
+                            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="marca" class="col-sm-2 col-form-label">Marca</label>*@
+                        @Html.LabelFor(model => model.contraseña, "Contraseña", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="marca" id="marca" class="form-control" required>
+                                    <option value="">Seleccione Marca</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                            @*@Html.DropDownList("marca", "Seleccione Marca")*@
+                            @Html.PasswordFor(model => model.contraseña, new { @class = "form-control" })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" name="btn_AgregarCliente">Agregar</button>
+
+                </div>
+                <!--</form>-->
+            }
+        </div>
+    </div>
+</div>
+
+<!--Modal Modificar Cliente-->
+<div class="modal fade" id="modal_modificar_cliente" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            @using (Html.BeginForm("ActualizarCliente", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @*<form id="" action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>*@
+                <div class="modal-header">
+                    <h4 class="modal-title">Modificar Cliente</h4>
+                    @Html.EditorFor(model => model.codigo, new { htmlAttributes = new { @class = "form-control", @id = "codigo_m_c", @type = "hidden" } })
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        <!--<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>-->
+                        @Html.LabelFor(model => model.nombre, "Nombre", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            <!--<input type="text" class="form-control" placeholder="Nombre" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="nombre" name="nombre" autocomplete="off" required>-->
+                            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", @id = "nombre_m_c" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+
+                        @*<label for="precio" class="col-sm-2 col-form-label">Precio</label>*@
+                        @Html.LabelFor(model => model.apellido, "Apellido", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Precio" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="precio" name="precio" autocomplete="off" autofocus required>*@
+                            @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control", @id = "apellido_m_c" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>*@
+                        @Html.LabelFor(model => model.email, "Email", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Descripcion" pattern="^([a-zA-Z0-9])*.([a-zA-Z0-9_-])+$" id="descripcion" name="descripcion" autocomplete="off" autofocus required>*@
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @id = "email_m_c" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos</div>-->
+                        </div>
+
+                        @*<label for="serie" class="col-sm-2 col-form-label">Serie</label>*@
+                        @Html.LabelFor(model => model.telefono, "Telefono", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="serie" id="serie" class="form-control" required>
+                                    <option value="">Seleccione Serie</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                            @*@Html.DropDownList("codigoSerie", "Seleccione Serie")*@
+                            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", @id = "telefono_m_c" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="marca" class="col-sm-2 col-form-label">Marca</label>*@
+                        @Html.LabelFor(model => model.contraseña, "Contraseña", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="marca" id="marca" class="form-control" required>
+                                    <option value="">Seleccione Marca</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                            @*@Html.DropDownList("marca", "Seleccione Marca")*@
+                            @Html.PasswordFor(model => model.contraseña, new { @class = "form-control", @id = "contraseña_m_c" })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-warning" name="btn_ModificarCliente">Modificar</button>
+
+                </div>
+                @*</form>*@
+            }
+        </div>
+    </div>
+</div>
+
+<!--Modal Agregar Mascota-->
+<div class="modal fade" id="modal_agregar_mascota" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            @using (Html.BeginForm("AgregarMascota", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <!--<form id="formAgregar" action="acciones/agregarUsuario.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>-->
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar Mascota</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        <!--<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>-->
+                        @Html.Label("nombre", "Nombre", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            <!--<input type="text" class="form-control" placeholder="Nombre" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="nombre" name="nombre" autocomplete="off" required>-->
+                            @Html.Editor("nombre", new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+
+                        @*<label for="precio" class="col-sm-2 col-form-label">Precio</label>*@
+                        @Html.Label("especie", "Especie", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Precio" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="precio" name="precio" autocomplete="off" autofocus required>*@
+                            @Html.Editor("especie", new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>*@
+                        @Html.Label("raza", "Raza", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Descripcion" pattern="^([a-zA-Z0-9])*.([a-zA-Z0-9_-])+$" id="descripcion" name="descripcion" autocomplete="off" autofocus required>*@
+                            @Html.Editor("raza", new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos</div>-->
+                        </div>
+
+                        @*<label for="serie" class="col-sm-2 col-form-label">Serie</label>*@
+                        @Html.Label("edad", "Edad", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="serie" id="serie" class="form-control" required>
+                                    <option value="">Seleccione Serie</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                            @*@Html.DropDownList("codigoSerie", "Seleccione Serie")*@
+                            @Html.Editor("edad", new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="marca" class="col-sm-2 col-form-label">Marca</label>*@
+                        @Html.Label("sexo", "Sexo", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Descripcion" pattern="^([a-zA-Z0-9])*.([a-zA-Z0-9_-])+$" id="descripcion" name="descripcion" autocomplete="off" autofocus required>*@
+                            @Html.Editor("sexo", new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos</div>-->
+                        </div>
+
+                        @*<label for="descripcionHTML" class="col-sm-2 col-form-label">Descripcion HTML</label>*@
+                        @Html.Label("fechanacimiento", "Fecha de Nacimiento", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="DescripcionHTML" pattern="" id="descripcionHTML" name="descripcionHTML" autocomplete="off" autofocus required>*@
+                            @Html.Editor("fechanacimiento", new { htmlAttributes = new { @class = "form-control" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Ingrese un correo valido</div>-->
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" name="btn_AgregarMascota">Agregar</button>
+
+                </div>
+                <!--</form>-->
+            }
+        </div>
+    </div>
+</div>
+
+<!--Modal Modificar Mascota-->
+<div class="modal fade" id="modal_modificar_mascota" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            @using (Html.BeginForm("ActualizarMascota", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @*<form id="" action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>*@
+                <div class="modal-header">
+                    <h4 class="modal-title">Modificar Mascota</h4>
+                    @Html.Editor("codigo", new { htmlAttributes = new { @class = "form-control", @id = "codigo_m_m", @type = "hidden" } })
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        <!--<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>-->
+                        @Html.Label("nombre", "Nombre", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            <!--<input type="text" class="form-control" placeholder="Nombre" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="nombre" name="nombre" autocomplete="off" required>-->
+                            @Html.Editor("nombre", new { htmlAttributes = new { @class = "form-control", @id = "nombre_m_m" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+
+                        @*<label for="precio" class="col-sm-2 col-form-label">Precio</label>*@
+                        @Html.Label("especie", "Especie", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Precio" pattern="^([-a-zA-ZÁÉÍÑÓÚáéíóúñ\s])+$" id="precio" name="precio" autocomplete="off" autofocus required>*@
+                            @Html.Editor("especie", new { htmlAttributes = new { @class = "form-control", @id = "especie_m_m" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos </div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>*@
+                        @Html.Label("raza", "Raza", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="Descripcion" pattern="^([a-zA-Z0-9])*.([a-zA-Z0-9_-])+$" id="descripcion" name="descripcion" autocomplete="off" autofocus required>*@
+                            @Html.Editor("raza", new { htmlAttributes = new { @class = "form-control", @id = "raza_m_m" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Por favor ingrese datos validos</div>-->
+                        </div>
+
+                        @*<label for="serie" class="col-sm-2 col-form-label">Serie</label>*@
+                        @Html.Label("edad", "Edad", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="serie" id="serie" class="form-control" required>
+                                    <option value="">Seleccione Serie</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                            @*@Html.DropDownList("codigoSerie", "Seleccione Serie")*@
+                            @Html.Editor("edad", new { htmlAttributes = new { @class = "form-control", @id = "edad_m_m" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-bottom: 2rem;">
+                        @*<label for="marca" class="col-sm-2 col-form-label">Marca</label>*@
+                        @Html.Label("sexo", "Sexo", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<select name="marca" id="marca" class="form-control" required>
+                                    <option value="">Seleccione Marca</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente/Usuario</option>
+                                </select>*@
+                        @*@Html.DropDownList("marca", "Seleccione Marca")*@
+                        @Html.Editor("sexo", new { htmlAttributes = new { @class = "form-control", @id = "sexo_m_m" } })
+                        <!--<div class="valid-feedback">Valido</div>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>-->
+                        </div>
+
+                        @*<label for="descripcionHTML" class="col-sm-2 col-form-label">Descripcion HTML</label>*@
+                        @Html.Label("fechanacimiento", "Fecha de Nacimiento", new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @*<input type="text" class="form-control" placeholder="DescripcionHTML" pattern="" id="descripcionHTML" name="descripcionHTML" autocomplete="off" autofocus required>*@
+                            @Html.Editor("fechanacimiento", new { htmlAttributes = new { @class = "form-control", @id = "fechanacimiento_m_m" } })
+                            <!--<div class="valid-feedback">Valido</div>
+                            <div class="invalid-feedback">Ingrese un correo valido</div>-->
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" name="btn_ModificarMascota">Modificar</button>
+                </div>
+                @*</form>*@
+            }
+        </div>
+    </div>
+</div>
+
+
