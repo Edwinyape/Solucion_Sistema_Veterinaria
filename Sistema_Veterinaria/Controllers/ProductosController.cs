@@ -30,17 +30,56 @@ namespace Sistema_Veterinaria.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                //var filename1 = Path.GetFileName(foto1.FileName);
-                //var filename2 = Path.GetFileName(foto2.FileName);
-                //var filename3 = Path.GetFileName(foto3.FileName);
+                if (Request.Files.Count > 0)
+                {
+                    var foto1 = Request.Files[0];
+                    var foto2 = Request.Files[1];
+                    var foto3 = Request.Files[2];
 
-                //var path1 = Path.Combine(Server.MapPath("~/Imagenes"), filename1);
+                    var filename1 = Path.GetFileName(foto1.FileName);
+                    var filename2 = Path.GetFileName(foto2.FileName);
+                    var filename3 = Path.GetFileName(foto3.FileName);
+
+                    var path1 = Path.Combine(Server.MapPath("~/Imagenes"), filename1);
+                    var path2 = Path.Combine(Server.MapPath("~/Imagenes"), filename2);
+                    var path3 = Path.Combine(Server.MapPath("~/Imagenes"), filename3);
+
+                    foto1.SaveAs(path1);
+                    foto2.SaveAs(path2);
+                    foto3.SaveAs(path3);
+
+                    p.foto1=filename1;
+                    p.foto2 = filename2;
+                    p.foto3 = filename3;
+                //int c = 1;
+                //var filename = Path.GetFileName(foto.FileName);
+                //var path = Path.Combine(Server.MapPath("~/Imagenes"), filename);
+                //foto.SaveAs(path);
+                //if (c == 1)
+                //{
+                //    p.foto1 = filename;
+
+                //}
+                //else if (c == 2)
+                //{
+                //    p.foto2 = filename;
+
+                //}
+                //else
+                //{
+                //    p.foto3 = filename;
+                //}
+                //c++;
+                }
+                
+                //var filename2 = Path.GetFileName(foto.FileName);
+                //var filename3 = Path.GetFileName(foto.FileName);
+
                 //var path2 = Path.Combine(Server.MapPath("~/Imagenes"), filename2);
                 //var path3 = Path.Combine(Server.MapPath("~/Imagenes"), filename3);
 
-                //foto1.SaveAs(path1);
-                //foto2.SaveAs(path2);
-                //foto3.SaveAs(path3);
+                //foto[1].SaveAs(path2);
+                //foto[2].SaveAs(path3);
 
                 //p.foto1 = filename1;
                 //p.foto2 = filename2;
