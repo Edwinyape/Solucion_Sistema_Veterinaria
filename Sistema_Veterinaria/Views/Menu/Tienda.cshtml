@@ -1,1 +1,111 @@
 ﻿@model Sistema_Veterinaria.Models.Productos
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="~/Content/menu.css" rel="stylesheet" />
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css?ver=4.4.2'>
+    <link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/ladda.min.css'>
+
+    <link rel="stylesheet" href="~/Content/carrito.css">
+    <link rel="stylesheet" href="~/Content/main.css" />
+
+
+</head>
+
+<body>
+
+    <nav class="navbar" style="background: #1b1b1b;">
+        <div class="content">
+            <img class="logo" src="~/img/patas-logo.png" />
+
+            <ul class="menu-list">
+
+                <div class="icon cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+
+                <li><a href="Index#quienes-somos">Quienes Somos</a></li>
+                <li><a href="Index">Especialidades</a></li>
+                <li><a href="Index">Servicios</a></li>
+                <li><a href="Menu/Tienda">Tienda</a></li>
+                <li>
+                    @if (Session["nombre"] == null || Session["apellido"] == null)
+                    {
+                        <a href="~/Login/validacion">Iniciar Sesion</a>
+                    }
+                    else
+                    {
+                        <a href="#">@Session["nombre"] @Session["apellido"]</a>
+                    }
+                </li>
+            </ul>
+            <div class="icon menu-btn" ">
+                <i class="fas fa-bars"></i>
+            </div>
+
+        </div>
+    </nav>
+
+    <header id="page-header" style="background: #f2f2f2;">
+        @*<div class="container">
+            <p>Nuestros Productos</p>
+        </div>*@
+    </header>
+
+
+    @*<nav id="nav">
+            <ul>
+                <li class="active"><a href="carrito.html" class="active">Productos Carrito</a></li>
+                <li>
+                    <a href="productos.html">nulo</a>
+                </li>
+                <li><a href="/conocenos.html">nulo</a></li>
+                <li><a href="/contacto.html">nulo</a></li>
+                <li><a href="/contacto.html">nulo</a></li>
+            </ul>
+        </nav>*@
+
+
+
+    <section class="page-section">
+        <div class="container">
+            <center>
+                <div class="row">
+                    <a class="cart-icon">
+                        <span id="totalItems">0</span>
+                        <ul class="cart"></ul>
+                    </a>
+
+
+                    <div class="productosWrapper large-12 columns">
+
+                    </div>
+
+                </div>
+            </center>
+        </div>
+    </section>
+
+
+    @*<footer class="page-footer">
+        <div class="container">
+            
+        </div>
+    </footer>*@
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js?ver=1.11.2'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/spin.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/ladda.min.js'></script>
+
+    <script src="/Scripts/all.js"></script>
+    <script src="/Scripts/carrito.js"></script>
+
+
+</body>
+</html>

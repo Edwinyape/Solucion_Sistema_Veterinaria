@@ -146,8 +146,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\carrito.css" />
     <Content Include="Content\DashboardMenu.css" />
     <Content Include="Content\jquery.datetimepicker.min.css" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style-login.css" />
@@ -165,6 +167,7 @@
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\carrito.js" />
     <Content Include="Scripts\DashboardMenu.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -185,6 +188,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CerrarSesionController.cs" />
+    <Compile Include="Controllers\DeliveryController.cs" />
+    <Compile Include="Controllers\DeliveryDAO.cs" />
     <Compile Include="Controllers\LoginDAO.cs" />
     <Compile Include="Controllers\ProductoDAO.cs" />
     <Compile Include="Controllers\ServiciosDAO.cs" />
@@ -222,6 +227,7 @@
     <Content Include="Views\Registro\Cliente.cshtml" />
     <Content Include="Views\Registro\Mascota.cshtml" />
     <Content Include="Views\Menu\Tienda.cshtml" />
+    <Content Include="Views\Delivery\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
