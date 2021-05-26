@@ -184,6 +184,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CerrarSesionController.cs" />
+    <Compile Include="Controllers\LoginDAO.cs" />
     <Compile Include="Controllers\ProductoDAO.cs" />
     <Compile Include="Controllers\ServiciosDAO.cs" />
     <Compile Include="Controllers\DBHelper.cs" />
@@ -219,6 +221,7 @@
     <Content Include="Views\Admin\Usuario.cshtml" />
     <Content Include="Views\Registro\Cliente.cshtml" />
     <Content Include="Views\Registro\Mascota.cshtml" />
+    <Content Include="Views\Menu\Tienda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -229,6 +232,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\" />
+    <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

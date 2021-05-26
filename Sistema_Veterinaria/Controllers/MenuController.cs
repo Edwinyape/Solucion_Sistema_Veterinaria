@@ -13,5 +13,10 @@ namespace Sistema_Veterinaria.Controllers
         {
             return View();
         }
+
+        public ActionResult Tienda()
+        {
+            return View();
+        }
     }
 }

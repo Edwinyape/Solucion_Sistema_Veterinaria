@@ -18,8 +18,16 @@
                 <li><a href="#quienes-somos">Quienes Somos</a></li>
                 <li><a href="#">Especialidades</a></li>
                 <li><a href="#">Servicios</a></li>
-                <li><a href="#">Tienda</a></li>
-                <li><a href="~/Login/validacion">Iniciar Sesion</a></li>
+                <li><a href="Menu/Tienda">Tienda</a></li>
+                <li>
+                    @if (Session["nombre"] == null || Session["apellido"] == null)
+                    {
+                        <a href="~/Login/validacion">Iniciar Sesion</a>
+                    }else
+                    {
+                        <a href="#">@Session["nombre"] @Session["apellido"]</a>
+                    }
+                </li>
             </ul>
             <div class="icon menu-btn" ">
                 <i class="fas fa-bars"></i>

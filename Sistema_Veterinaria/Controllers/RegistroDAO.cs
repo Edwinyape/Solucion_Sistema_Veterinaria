@@ -28,6 +28,7 @@ namespace Sistema_Veterinaria.Controllers
                 c.email = dr.GetString(3);
                 c.telefono = dr.GetString(4);
                 c.contraseña = dr.GetString(5);
+                c.rol = dr.GetInt32(6);
 
                 lista.Add(c);
             }

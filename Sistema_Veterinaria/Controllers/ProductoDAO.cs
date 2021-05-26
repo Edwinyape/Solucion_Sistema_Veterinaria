@@ -64,7 +64,7 @@ namespace Sistema_Veterinaria.Controllers
             try
             {
                 string cod = DBHelper.ExecuteScalar("ModificarProductos", p.codigo, p.nombre, p.precio, p.codigoSerie,
-                             p.marca, p.descripcion, p.descripcionHtml, "img", "img", "img", 1, 1).ToString();
+                             p.marca, p.descripcion, p.descripcionHtml, p.foto1, p.foto2, p.foto3 , 1, 1).ToString();
                 mensaje = "Producto: " + cod + " actualizado correctamente";
             }
             catch (Exception ex)

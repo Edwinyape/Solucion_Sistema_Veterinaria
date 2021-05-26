@@ -13,5 +13,6 @@ namespace Sistema_Veterinaria.Models
         public string email { get; set; }
         public string telefono { get; set; }
         public string contraseña { get; set; }
+        public int rol { get; set; }
     }
 }
