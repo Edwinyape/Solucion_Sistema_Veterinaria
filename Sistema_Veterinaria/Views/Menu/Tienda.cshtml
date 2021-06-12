@@ -1,12 +1,16 @@
-﻿@model Sistema_Veterinaria.Models.Productos
+﻿@model IEnumerable<Sistema_Veterinaria.Models.Productos>
+
+@{ 
+    string datos=" ";
+    string apostrofe = "";
+    string encoded = " ";
+    string decoded = " ";
+}
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link href="~/Content/menu.css" rel="stylesheet" />
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css?ver=4.4.2'>
     <link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/ladda.min.css'>
@@ -19,20 +23,22 @@
 
 <body>
 
-    <nav class="navbar" style="background: #1b1b1b;">
+    @*<header id="page-header">
+            <div class="container">
+                <p>Nuestros Productos</p>
+            </div>
+        </header>*@
+
+
+    <nav id="nav">
         <div class="content">
             <img class="logo" src="~/img/patas-logo.png" />
+            <ul class="menu-list" style="margin-top: 1.25rem;">
 
-            <ul class="menu-list">
-
-                <div class="icon cancel-btn">
-                    <i class="fas fa-times"></i>
-                </div>
-
-                <li><a href="Index#quienes-somos">Quienes Somos</a></li>
-                <li><a href="Index">Especialidades</a></li>
-                <li><a href="Index">Servicios</a></li>
-                <li><a href="Menu/Tienda">Tienda</a></li>
+                <li><a href="#">Quienes Somos</a></li>
+                <li><a href="#">Especialidades</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="Tienda">Tienda</a></li>
                 <li>
                     @if (Session["nombre"] == null || Session["apellido"] == null)
                     {
@@ -44,34 +50,8 @@
                     }
                 </li>
             </ul>
-            <div class="icon menu-btn" ">
-                <i class="fas fa-bars"></i>
-            </div>
-
         </div>
     </nav>
-
-    <header id="page-header" style="background: #f2f2f2;">
-        @*<div class="container">
-            <p>Nuestros Productos</p>
-        </div>*@
-    </header>
-
-
-    @*<nav id="nav">
-            <ul>
-                <li class="active"><a href="carrito.html" class="active">Productos Carrito</a></li>
-                <li>
-                    <a href="productos.html">nulo</a>
-                </li>
-                <li><a href="/conocenos.html">nulo</a></li>
-                <li><a href="/contacto.html">nulo</a></li>
-                <li><a href="/contacto.html">nulo</a></li>
-            </ul>
-        </nav>*@
-
-
-
     <section class="page-section">
         <div class="container">
             <center>
@@ -91,21 +71,145 @@
         </div>
     </section>
 
-
-    @*<footer class="page-footer">
-        <div class="container">
-            
-        </div>
-    </footer>*@
-
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js?ver=1.11.2'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/spin.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/ladda.min.js'></script>
 
-    <script src="/Scripts/all.js"></script>
-    <script src="/Scripts/carrito.js"></script>
+
+    <script src="~/Scripts/carrito.js"></script>
+
+    <script type="text/javascript">
+       
+        app.masVendidos = function () {
+
+        
+                        @*@{
+                            datos += "var productos = [";
+
+                            foreach (var item in Model)
+                            {
+
+                                datos += "\n{";
+                                datos += "\nid:" + item.codigo + ", ";
+                                datos += "\nimg: '/Imagenes/" + item.foto1+"', ";
+                                datos += "\nname:'" + item.nombre + "', ";
+                                datos += "\nprice:" + item.precio + ", ";
+                                datos += "\ndesc:'" + item.descripcion + "', ";
+                                datos += "\nstock:" + 1;
+                                datos += "\n},";
+
+
+                            }
+                                datos += "\n],"; 
+                            }*@
+
+           var productos=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(x=> new { id=x.codigo, img="/Imagenes/"+x.foto1, name=x.nombre, price=x.precio, desc=x.descripcion, stock=1}).ToArray())),
+        //    var productos = [
+        //        {
+        //            id: 1,
+        //            img: '/assets/img/cambo.jpg',
+        //            name: 'cambo comida para perro',
+        //            price: 180.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        },
+        //        {
+        //            id: 2,
+        //            name: 'shampo para perro',
+        //            img: 'assets/img/sahmpoo.jpg',
+        //            price: 199.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 2
+        //        },
+        //        {
+        //            id: 3,
+        //            name: 'comida mimaskot',
+        //            img: 'assets/img/mimaskot.jpeg',
+        //            price: 99.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 1
+        //        },
+        //        {
+        //            id: 4,
+        //            name: 'comida ricocan',
+        //            img: 'assets/img/ricocan.jpg',
+        //            price: 80.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        },
+        //        {
+        //            id: 5,
+        //            name: 'comida para perros nutricat',
+        //            img: 'assets/img/nutri.jpg',
+        //            price: 80.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        },
+        //        {
+        //            id: 6,
+        //            name: 'Colchon para perros confort',
+        //            img: 'assets/img/colchon.jpg',
+        //            price: 50.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        },
+        //        {
+        //            id: 7,
+        //            name: 'cepillo de peinado',
+        //            img: 'assets/img/cepillo.jpg',
+        //            price: 30.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        },
+        //        {
+        //            id: 8,
+        //            name: 'casa perro',
+        //            img: 'assets/img/casa.jpg',
+        //            price: 80.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        },
+        //        {
+        //            id: 9,
+        //            name: 'Colchon',
+        //            img: 'assets/img/colchon.jpg',
+        //            price: 80.00,
+        //            desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        //            stock: 4
+        //        }
+            
+        //],
+                wrapper = $('.productosWrapper'),
+                contenido = ''
+
+            for (var i = 0; i < productos.length; i++) {
+
+                if (productos[i].stock > 0) {
+
+                    contenido += '<div class="coin-wrapper">'
+                    contenido += '		<img src="' + productos[i].img + '" alt="' + productos[i].name + '">'
+                    contenido += '		<span class="large-12 columns product-details">'
+                    contenido += '			<h3>' + productos[i].name + ' <span class="price">$ ' + productos[i].price + ' </span></h3>'
+                    contenido += '			<h3>Tenemos: <span class="stock">' + productos[i].stock + '</span></h3>'
+                    contenido += '		</span>'
+                    contenido += '		<a class="large-12 columns btn submit ladda-button prod-' + productos[i].id + '" data-style="slide-right" onclick="app.addtoCart(' + productos[i].id + ');">Añadir a la canasta</a>'
+                    contenido += '		<div class="clearfix"></div>'
+                    contenido += '</div>'
+
+                }
+
+            }
+
+            wrapper.html(contenido)
+
+            localStorage.setItem('productos', JSON.stringify(productos))
+        }
+    </script>
+
 
 
 </body>
+
 </html>
+

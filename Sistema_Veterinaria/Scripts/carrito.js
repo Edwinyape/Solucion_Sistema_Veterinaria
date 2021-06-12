@@ -26,106 +26,106 @@ business_paypal = ''; // aquí va tu correo electrónico de paypal
 		
 	}
 
-	app.masVendidos = function(){
-		var productos = [
-			{
-				id : 1,
-				img: '/assets/img/cambo.jpg',
-				name : 'cambo comida para perro',
-				price : 180.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 2,
-				name : 'shampo para perro',
-				img : 'assets/img/sahmpoo.jpg',
-				price : 199.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 2
-			},
-			{
-				id : 3,
-				name : 'comida mimaskot',
-				img : 'assets/img/mimaskot.jpeg',
-				price : 99.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 1
-			},
-			{
-				id : 4,
-				name : 'comida ricocan',
-				img : 'assets/img/ricocan.jpg',
-				price : 80.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 5,
-				name : 'comida para perros nutricat',
-				img : 'assets/img/nutri.jpg',
-				price : 80.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 6,
-				name : 'Colchon para perros confort',
-				img : 'assets/img/colchon.jpg',
-				price : 50.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 7,
-				name : 'cepillo de peinado',
-				img : 'assets/img/cepillo.jpg',
-				price : 30.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 8,
-				name : 'casa perro',
-				img : 'assets/img/casa.jpg',
-				price : 80.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 9,
-				name : 'Colchon',
-				img : 'assets/img/colchon.jpg',
-				price : 80.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			}
-		],
-		wrapper = $('.productosWrapper'),
-		contenido = ''
+	//app.masVendidos = function(){
+	//	var productos = [
+	//		{
+	//			id : 1,
+	//			img: '/assets/img/cambo.jpg',
+	//			name : 'cambo comida para perro',
+	//			price : 180.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		},
+	//		{
+	//			id : 2,
+	//			name : 'shampo para perro',
+	//			img : 'assets/img/sahmpoo.jpg',
+	//			price : 199.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 2
+	//		},
+	//		{
+	//			id : 3,
+	//			name : 'comida mimaskot',
+	//			img : 'assets/img/mimaskot.jpeg',
+	//			price : 99.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 1
+	//		},
+	//		{
+	//			id : 4,
+	//			name : 'comida ricocan',
+	//			img : 'assets/img/ricocan.jpg',
+	//			price : 80.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		},
+	//		{
+	//			id : 5,
+	//			name : 'comida para perros nutricat',
+	//			img : 'assets/img/nutri.jpg',
+	//			price : 80.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		},
+	//		{
+	//			id : 6,
+	//			name : 'Colchon para perros confort',
+	//			img : 'assets/img/colchon.jpg',
+	//			price : 50.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		},
+	//		{
+	//			id : 7,
+	//			name : 'cepillo de peinado',
+	//			img : 'assets/img/cepillo.jpg',
+	//			price : 30.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		},
+	//		{
+	//			id : 8,
+	//			name : 'casa perro',
+	//			img : 'assets/img/casa.jpg',
+	//			price : 80.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		},
+	//		{
+	//			id : 9,
+	//			name : 'Colchon',
+	//			img : 'assets/img/colchon.jpg',
+	//			price : 80.00,
+	//			desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+	//			stock : 4
+	//		}
+	//	],
+	//	wrapper = $('.productosWrapper'),
+	//	contenido = ''
 
-		for(var i = 0; i < productos.length; i++){
+	//	for(var i = 0; i < productos.length; i++){
 
-			if(productos[i].stock > 0){
+	//		if(productos[i].stock > 0){
 
-				contenido+= '<div class="coin-wrapper">'
-				contenido+= '		<img src="'+productos[i].img+'" alt="'+productos[i].name+'">'
-				contenido+= '		<span class="large-12 columns product-details">'
-				contenido+= '			<h3>'+productos[i].name+' <span class="price">$ '+productos[i].price+' </span></h3>'
-				contenido+= '			<h3>Tenemos: <span class="stock">'+productos[i].stock+'</span></h3>'
-				contenido+= '		</span>'
-				contenido+= '		<a class="large-12 columns btn submit ladda-button prod-'+productos[i].id+'" data-style="slide-right" onclick="app.addtoCart('+productos[i].id+');">Añadir a la canasta</a>'
-				contenido+= '		<div class="clearfix"></div>'
-				contenido+= '</div>'
+	//			contenido+= '<div class="coin-wrapper">'
+	//			contenido+= '		<img src="'+productos[i].img+'" alt="'+productos[i].name+'">'
+	//			contenido+= '		<span class="large-12 columns product-details">'
+	//			contenido+= '			<h3>'+productos[i].name+' <span class="price">$ '+productos[i].price+' </span></h3>'
+	//			contenido+= '			<h3>Tenemos: <span class="stock">'+productos[i].stock+'</span></h3>'
+	//			contenido+= '		</span>'
+	//			contenido+= '		<a class="large-12 columns btn submit ladda-button prod-'+productos[i].id+'" data-style="slide-right" onclick="app.addtoCart('+productos[i].id+');">Añadir a la canasta</a>'
+	//			contenido+= '		<div class="clearfix"></div>'
+	//			contenido+= '</div>'
 
-			}
+	//		}
 
-		}
+	//	}
 
-		wrapper.html(contenido)
+	//	wrapper.html(contenido)
 
-		localStorage.setItem('productos',JSON.stringify(productos))
-	}
+	//	localStorage.setItem('productos',JSON.stringify(productos))
+	//}
 
 
 	app.createProducts = function(){

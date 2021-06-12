@@ -260,7 +260,7 @@
 }
 
 body span, body p, body h3, body small, body h4, body h5, body h1, body a, body button {
-  font-family: 'Montserrat';
+  /*font-family: 'Montserrat';*/
 }
 
 .productosWrapper {

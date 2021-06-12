@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using Sistema_Veterinaria.Models;
+
 namespace Sistema_Veterinaria.Controllers
 {
     public class MenuController : Controller
     {
+        ProductoDAO pdao = new ProductoDAO();
         // GET: Menu
         public ActionResult Index()
         {
@@ -16,7 +19,8 @@ namespace Sistema_Veterinaria.Controllers
 
         public ActionResult Tienda()
         {
-            return View();
+            List<Productos> lista = pdao.ListarProductos();
+            return View(lista);
         }
     }
 }
