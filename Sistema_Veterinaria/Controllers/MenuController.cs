@@ -11,6 +11,7 @@ namespace Sistema_Veterinaria.Controllers
     public class MenuController : Controller
     {
         ProductoDAO pdao = new ProductoDAO();
+        PedidosDAO peddao = new PedidosDAO();
         // GET: Menu
         public ActionResult Index()
         {
@@ -22,5 +23,12 @@ namespace Sistema_Veterinaria.Controllers
             List<Productos> lista = pdao.ListarProductos();
             return View(lista);
         }
+
+        public ActionResult Pedidos(int cod)
+        {
+            List<Pedidos> lista = peddao.ListarPedidos(cod);
+            return View(lista);
+        }
+
     }
 }

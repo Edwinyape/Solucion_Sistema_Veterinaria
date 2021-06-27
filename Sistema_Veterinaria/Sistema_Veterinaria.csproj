@@ -159,6 +159,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\Veterinaria2021 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Veterinaria2021 - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="img\fondo.jpg" />
     <Content Include="img\imgusuario.png" />
@@ -192,6 +193,7 @@
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\DeliveryDAO.cs" />
     <Compile Include="Controllers\LoginDAO.cs" />
+    <Compile Include="Controllers\PedidosDAO.cs" />
     <Compile Include="Controllers\ProductoDAO.cs" />
     <Compile Include="Controllers\ServiciosDAO.cs" />
     <Compile Include="Controllers\DBHelper.cs" />
@@ -207,6 +209,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Mascota.cs" />
     <Compile Include="Models\Modelos.cs" />
+    <Compile Include="Models\Pedidos.cs" />
     <Compile Include="Models\Productos.cs" />
     <Compile Include="Models\Servicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -229,6 +232,7 @@
     <Content Include="Views\Registro\Mascota.cshtml" />
     <Content Include="Views\Menu\Tienda.cshtml" />
     <Content Include="Views\Delivery\Index.cshtml" />
+    <Content Include="Views\Menu\Pedidos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

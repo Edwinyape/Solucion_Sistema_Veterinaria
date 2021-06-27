@@ -18,16 +18,29 @@
                 <li><a href="#">Quienes Somos</a></li>
                 <li><a href="#">Especialidades</a></li>
                 <li><a href="#">Servicios</a></li>
-                <li><a href="Menu/Tienda">Tienda</a></li>
+                @if (Session["nombre"] != null || Session["apellido"] != null)
+                {
+                    <li><a href="Menu/Tienda">Tienda</a></li>
+                }
+                else
+                {
+                    <li><a href="Tienda">Tienda</a></li>
+                }
+                @if (Session["nombre"] != null || Session["apellido"] != null)
+                {
+                    <li><a href="Menu/Pedidos?cod=@Session["codigo"]">Pedidos</a></li>
+                }
                 <li>
                     @if (Session["nombre"] == null || Session["apellido"] == null)
                     {
                         <a href="~/Login/validacion">Iniciar Sesion</a>
-                    }else
+                    }
+                    else
                     {
                         <a href="#">@Session["nombre"] @Session["apellido"]</a>
                     }
                 </li>
+
             </ul>
             <div class="icon menu-btn" ">
                 <i class="fas fa-bars"></i>
@@ -68,6 +81,20 @@
     </script>
 
     <script src="~/Scripts/main.js"></script>
+
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "8d99c35f-0808-497e-89ca-3c7996192085", // The ID of this integration.
+            region: "us-south", // The region your integration is hosted in.
+            serviceInstanceID: "5b6d2273-f671-440c-b4a0-4407a9264a8b", // The ID of your service instance.
+            onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+            const t = document.createElement('script');
+            t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+            document.head.appendChild(t);
+        });
+    </script>
 
 </body>
 </html >
